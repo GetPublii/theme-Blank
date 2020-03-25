@@ -1,0 +1,107 @@
+{{! Author page; this file renders a tag page containing a list of the latest posts }}
+{{> head}}
+{{> navbar}}
+<main>
+   
+   {{! indicates the author's context }}
+   {{#author}}
+
+      {{! check if an author avatar exists }}
+      {{#if avatar}}
+         <img 
+            src="{{avatar}}" 
+            {{ lazyload "eager" }} 
+            alt="{{name}}">
+      {{/if}}
+      {{! /check if an author avatar exists }}
+
+      <h1>
+         {{name}}
+         <sup>({{postsNumber}})</sup>
+      </h1>
+
+      {{! check if an author description exists }}
+      {{#if description}}
+         <p>{{description}}</p>
+      {{/if}}
+      {{! /check if a author description exists }}
+
+      {{! check if an author email address exists }}
+      {{#if email}}
+         <p>{{email}}</p>
+      {{/if}}
+      {{! /check if a author email address exists }}
+
+   {{/author}}
+   {{! /indicates the author's context }}
+
+
+   {{! loop that generates a list of posts }}
+   {{#each posts}}
+      <article>
+
+         {{! featured image }}
+         {{#featuredImage}}
+            {{! checks if an image exists }}
+            {{#if url}}
+               <img
+                     src="{{url}}"
+                     {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled  }}
+                     {{#if @config.site.responsiveImages}}
+                        {{responsiveImageAttributes 'featuredImage' srcset sizes}}
+                     {{/if}}
+                     {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated }}
+                     {{lazyload "lazy"}}
+                     height="{{height}}"
+                     width="{{width}}"
+                     alt="{{alt}}">
+            {{/if}}
+            {{! /checks if an image exists }}
+         {{/featuredImage}}
+         {{! /featured image }}
+
+         {{! post title }}
+         <h2>
+            <a href="{{url}}">{{title}}</a>
+         </h2>
+         {{! /post title }}
+
+         {{! post creation date }}
+         <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+            {{date createdAt}}
+         </time>
+         {{! /post creation date }}
+
+         {{! post author }}
+         {{#author}}
+            <img src="{{avatar}}" {{lazyload "lazy"}} alt="">
+            <a href="{{url}}">{{name}}</a>
+         {{/author}}
+         {{! /post author }}
+
+         {{! main tag - if not selected, the first tag in the list of all tags
+         will be displayed }}
+         {{#if mainTag}}
+            <a href="{{mainTag.url}}">{{mainTag.name}}</a>
+         {{/if}}
+         {{! /main tag }}
+
+         {{! post excerpt - the Custom excerpt is generated when the Read More button is used when editing a post }}
+         {{#if hasCustomExcerpt}}
+            {{{ excerpt }}}
+         {{else}}
+            <p>{{{ excerpt }}}</p>
+         {{/if}}
+         {{! /post excerpt }}
+
+      </article>
+   {{/each}}
+   {{! /loop that generates a list of posts }}
+   
+</main>
+<aside>
+   {{> sidebar}}
+</aside>
+
+{{> pagination}}
+{{> footer}}

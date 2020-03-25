@@ -1,0 +1,21 @@
+<header>
+
+   {{! @website global variable used to display a logo and website name  }}
+   {{! check if a Website logo exists, if not, dispaly the website name }}
+   <a id="logo" href="{{@website.url}}">
+      {{#if @website.logo}}
+         <img src="{{@website.logo}}" alt="{{@website.name}}">
+      {{else}}
+         {{@website.name}}
+      {{/if}}
+   </a>
+   {{! /check if a Website logo exists, if not, dispaly the website name }}
+   {{! /@website global variable used to display a logo and website name  }}
+
+   {{! check if a menu is assigned to the Main menu position }}
+   {{#if menus.mainMenu}}
+      {{> menu menus.mainMenu}}
+   {{/if}}
+   {{! /check if a menu is assigned to the Main menu position }}
+
+</header>

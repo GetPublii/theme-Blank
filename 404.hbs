@@ -1,0 +1,11 @@
+{{! 404 Error page; this file renders a 4040.html page; the "create404page" flag must be defined and enabled in config.json file within the "renderer" section }}
+{{> head}}
+{{> navbar}}
+<main>
+   <h1>{{ translate 'error.404' }}</h1>
+   <p>{{ translate 'error.message' }}</p>
+      <a href="{{@website.url}}">
+         {{ translate 'error.button' }}
+      </a>
+</main>
+{{> footer}}

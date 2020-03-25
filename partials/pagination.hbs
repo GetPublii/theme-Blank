@@ -1,0 +1,47 @@
+{{! check if pagination exist }}
+{{#if @pagination}}
+   <nav class="pagination">
+      {{! check the sort of posts order direction (located in Site Settings -> Post listing) }}
+      {{#checkIf @website.postsOrdering '==' "desc"}}
+         {{#if @pagination.nextPage}}
+            <a href="{{@pagination.nextPageUrl}}">
+               {{#checkIf @website.postsOrdering '==' "desc"}}
+                  {{ translate 'partials.pagination.prev' }}               
+               {{else}}
+                  {{ translate 'partials.pagination.next' }}  
+               {{/checkIf}}
+            </a>
+         {{/if}}
+         {{#if @pagination.previousPage}}
+            <a href="{{@pagination.previousPageUrl}}">
+               {{#checkIf @website.postsOrdering '==' "desc"}}
+                  {{ translate 'partials.pagination.next' }}
+               {{else}}
+                  {{ translate 'partials.pagination.prev' }}
+               {{/checkIf}}
+            </a>
+         {{/if}}
+      {{else}}
+         {{#if @pagination.previousPage}}
+            <a href="{{@pagination.previousPageUrl}}">
+               {{#checkIf @website.postsOrdering '==' "desc"}}
+                  {{ translate 'partials.pagination.next' }}
+               {{else}}
+                  {{ translate 'partials.pagination.prev' }}
+               {{/checkIf}}
+            </a>
+         {{/if}}
+         {{#if @pagination.nextPage}}
+            <a href="{{@pagination.nextPageUrl}}">
+               {{#checkIf @website.postsOrdering '==' "desc"}}
+                  {{ translate 'partials.pagination.prev' }}
+               {{else}}
+                  {{ translate 'partials.pagination.next' }}
+               {{/checkIf}}
+            </a>
+         {{/if}}
+      {{/checkIf}}
+      {{! /check the sort of posts order direction}}
+   </nav>
+{{/if}}
+{{! /check if pagination exist }}

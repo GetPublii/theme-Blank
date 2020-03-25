@@ -1,0 +1,29 @@
+{
+   "partials": {
+           
+      "pagination": {
+         "prev": "Previous",
+         "next": "Next"
+      },
+
+      "sidebar": {
+         "selectedPosts": "Selected posts",
+         "featuredPosts": "Featured posts",
+         "authors": "Authors"
+      }
+   },
+
+   "post": {
+      "publishedBy": "By ",
+      "lastUpdatedDate": "Updated on: ",
+      "previousPost": "Previous",
+      "nextPost": "Next",
+      "relatedPosts": "Author: "
+   },
+
+   "error": {
+       "404": "Error 404",
+       "message": "The page you were looking for appears to have been moved, deleted or does not exist. You could go back to where you were or head straight to our home page.",
+       "button": "Go Home"
+   }
+}

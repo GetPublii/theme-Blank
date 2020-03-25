@@ -1,0 +1,212 @@
+{{! Post page; this file renders a single post and loads all the content}}
+{{> head}}
+{{> navbar}}
+<main>
+
+   {{! injects code via a Custom HTML tool - as defined in the config.json file in the "renderer" section }}
+   {{#if @customHTML.afterPost}}
+      <div id="custom-html-before-post">
+         {{{@customHTML.afterPost}}}
+      </div>
+   {{/if}}
+   {{! /injects code via a Custom HTML tool }}
+
+   {{! indicates the post's context}}
+   {{#post}}
+      <article> 
+         <header>
+
+            {{! post title }}
+            <h1>
+               {{title}}
+            </h1>
+            {{! /post title }}
+
+            {{! post creation date }}
+            <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+               {{date createdAt}}
+            </time>
+            {{! /post creation date }}
+
+            {{! post author }}
+            {{ translate 'post.publishedBy' }}
+            {{#author}}
+               <a href="{{url}}" rel="author" title="{{name}}">{{name}}</a>
+            {{/author}}
+            {{! /post author }}
+
+            {{! main tag - if not selected, the first tag in the list of all tags will be displayed }}
+            {{#if mainTag}}
+               <a href="{{ mainTag.url }}" class="post__maintag">
+                  {{mainTag.name }}
+               </a>
+            {{/if}}
+            {{! /main tag }}
+
+            {{! post modification date }}
+            {{#if modifiedAt}}
+               {{ translate 'post.lastUpdatedDate' }}
+               <time datetime="{{date modifiedAt 'YYYY-MM-DDTHH:mm'}}">
+                  {{date modifiedAt}}
+               </time>
+            {{/if}}
+            {{! /post modification date }}
+
+         </header>
+
+         {{! featured image }}
+         {{#featuredImage}}
+            {{! check if an image exists }}
+            {{#if url}}
+               <figure id="featured-image">
+                  <img
+                     src="{{url}}"
+                     {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled  }}
+                     {{#if @config.site.responsiveImages}}
+                        {{responsiveImageAttributes 'featuredImage' srcset sizes}}
+                     {{/if}}
+                     {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated }}
+                     {{ lazyload "eager" }}
+                     height="{{height}}"
+                     width="{{width}}"
+                     alt="{{alt}}">
+                  {{! checks if the caption or credits exist }}
+                  {{#checkIfAny caption credits}}
+                     <figcaption>
+                        {{caption}}
+                        {{credits}}
+                     </figcaption>
+                  {{/checkIfAny}}
+                  {{! /checks if the caption or credits exist }}
+               </figure>
+            {{/if}}
+            {{! /check if an image exists }}
+         {{/featuredImage}}
+         {{! /featured image }}
+         
+         {{! post body }}
+         <div id="post-entry">
+            {{{text}}}
+         </div>
+         {{! /post body }}
+
+         {{! checks if the "displayAuthorBio" post option is enabled - the Post Options are defined in the config.json in the "postConfig" section, and are accessible in the Theme -> Post Options section of Publii and in the post editor itself in the sidebar -> Other Options section }}
+         {{#if @config.post.displayAuthorBio}}
+            {{! author bio section }}
+            {{#author}}
+               <div id="author-bio">
+
+                  {{! checks if an author avatar exists }}
+                  {{#if avatar}}
+                     <img
+                        src="{{avatar}}"
+                        {{ lazyload "lazy" }}
+                        alt="{{name}}">
+                  {{/if}}
+                  {{! /checks if an author avatar exists }}
+
+                  {{! displays the author's name with a link to the author's page }}
+                     <h3>
+                        <a href="{{url}}" title="{{name}}">{{name}}</a>
+                     </h3>
+                  {{! /displays the author's name with a link to the author's page }}
+
+
+                  {{! checks if an author description exists }}
+                  {{#if description}}
+                     <p>
+                        {{description}}
+                     </p>
+                  {{/if}}
+                  {{! /checks if an author description exists }}
+               
+               </div>
+            {{/author}}
+            {{! /author bio section }}
+         {{/if}}
+         {{! /check if the "displayAuthorBio" Post option is enabled  }}
+
+         {{! previous & next post }}
+         {{! checks if there are any posts besides the current one; including ../ segment on a path, we change the post context into the parent context }}
+         {{#checkIfAny ../previousPost ../nextPost}}
+            <nav id="post-navigation">
+               {{#../previousPost}}
+                  <a href="{{url}}" rel="prev">
+                     &larr; {{ translate 'post.previousPost' }}
+                     ({{title}})
+                  </a>             
+               {{/../previousPost}}
+               
+               {{#../nextPost}}                
+                  <a href="{{url}}" rel="prev">
+                     {{ translate 'post.nextPost' }} 
+                     ({{title}}) &rarr;
+                  </a>                
+               {{/../nextPost}}
+            </nav>
+         {{/checkIfAny}}
+         {{! /checks if there are any posts besides the current one }}
+         {{! /previous & next post }}
+
+         {{! related posts - defined in config.json file in the "renderer" section }}
+         {{! checks if there is any related post; including ../ segment on a path, we change the post context into the parent context }}
+         {{#if ../relatedPosts}}
+            <div id="related-posts">
+               <h3>
+                  {{ translate 'post.relatedPosts' }}
+               </h3>
+               <div>
+
+                  {{! loop that generates a list of related posts}}
+                  {{#each ../relatedPosts}}
+                     <section>     
+                        {{#featuredImage}}
+                           {{#if url}}
+                              <a href="{{../url}}" >
+                                 <img
+                                    src="{{url}}"
+                                    {{#if @config.site.responsiveImages}}
+                                       {{responsiveImageAttributes 'featuredImage' srcset sizes}}
+                                    {{/if}}
+                                    {{ lazyload "lazy" }}
+                                    height="{{height}}"
+                                    width="{{width}}"
+                                    alt="{{alt}}">
+                              </a>
+                           {{/if}}
+                        {{/featuredImage}}
+
+                        <h4>
+                           <a href="{{url}}">{{title}}</a>
+                        </h4>
+
+                        <p>{{{ excerpt }}}</p>
+
+                     </section>
+                  {{/each}}
+                  {{! /loop that generates a list of related posts}}
+
+               </div>
+            </div>
+         {{/if}}
+         {{! /check if there is any related post }}
+         {{! /related posts }}
+
+      </article>
+   {{/post}}
+   {{! /indicates the post's context}}
+   
+   {{! code injection by a Custom HTML tool - defined in config.json file in the renderer section}}
+   {{#if @customHTML.afterPost}}
+      <div id="custom-html-after-post">
+         {{{@customHTML.afterPost}}}
+      </div>
+   {{/if}}
+   {{! injects code via a Custom HTML tool }}
+
+</main>
+<aside>
+   {{> sidebar}}
+</aside>
+
+{{> footer}}

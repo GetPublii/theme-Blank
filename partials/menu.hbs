@@ -1,0 +1,77 @@
+{{! check if this is a first menu level }}
+{{#unless level}}
+   <nav>
+{{/unless}}
+{{! /check if this is a first menu lavel }}
+
+      {{! check if a submenu exists, then display .submenu class with number of nested menu levels; if the submenu does not exist, display the .menu class  }}
+      <ul{{#if level}} class="submenu level-{{level}}" aria-hidden="true" {{else}} class="menu"{{/if}}>
+
+         {{! loop generating a list of menu items}}
+         {{#each items}}
+            <li{{menuItemClasses}}> {{! menuItemClasses generates the following CSS classses: .active and .has-submenu }}
+
+            {{! check if the menu item is a link }}
+            {{#if link}}
+               <a
+                  href="{{menuUrl}}"
+
+                  {{! check if title attribute exists }}
+                  {{#if title}}
+                     title="{{title}}"
+                  {{/if}}
+                  {{! /check if title attribute exists }}
+
+                  {{! check if target attribute exists }}
+                  {{#if target}}
+                     target="{{target}}"
+                  {{/if}}
+                  {{! /check if target attribute exists }}
+
+                  {{! check if rel attribute exists }}
+                  {{#if rel}}
+                     rel="{{rel}}"
+                  {{/if}}
+                  {{! /check if rel attribute exists }}
+
+                  {{! check if the menu item contains a submenu }}
+                  {{#if items}} 
+                     aria-haspopup="true"
+                  {{/if}}>
+                  {{! /check if the menu item contains a submenu }}
+
+                  {{label}}
+               </a>
+               {{! /check if the menu item is a link }}
+
+            {{else}}
+               {{! if the menu item is not a link display a separator }}
+               <span
+                  {{#if title}}
+                     title="{{title}}"
+                  {{/if}} 
+                  {{#if items}} 
+                     aria-haspopup="true"
+                  {{/if}}>
+                  {{label}}
+               </span>
+               {{! if the menu item is not a link display a separator }}
+            {{/if}}
+
+            {{! check if the menu item contains a submenu }}
+            {{#if items}}
+               {{> menu}}
+            {{/if}}
+            {{! check if the menu item contains a submenu }}
+
+         </li>
+         {{/each}}
+         {{! /loop generating a list of menu items}}
+
+      </ul>
+
+{{! check if this is a first menu level }}
+{{#unless level}}
+   </nav>
+{{/unless}}
+{{! /check if this is a first menu level }}

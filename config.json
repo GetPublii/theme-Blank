@@ -1,0 +1,174 @@
+{
+    "name": "Blank",
+    "version": "1.0.0.0",
+    "author": "TidyCustoms <https://tidycustoms.net/>",
+    "renderer": {
+        "relatedPostsNumber": 3,
+        "renderRelatedPosts": true,
+        "renderSimilarPosts": false,
+        "renderPrevNextPosts": true,
+        "createContentStructure": true,
+        "includeFeaturedInPosts": true,
+        "tagsIncludeFeaturedInPosts": true,
+        "authorsIncludeFeaturedInPosts": true,
+        "featuredPostsNumber": 0,
+        "tagsFeaturedPostsNumber": 0,
+        "authorsFeaturedPostsNumber": 0,
+        "create404page": true,
+        "customHTML": {
+            "beforePost": "Before every post",
+            "afterPost": "After every post"
+        }
+    },
+    "menus": {
+        "mainMenu": "Main menu",
+        "footerMenu": "Footer menu"
+    },
+    "config": [
+        {
+            "name": "postsPerPage",
+            "label": "Posts per page",
+            "value": 12,
+            "type": "number"
+        },
+        {
+            "name": "tagsPostsPerPage",
+            "label": "Tags posts per page",
+            "value": 12,
+            "type": "number"
+        },
+        {
+            "name": "authorsPostsPerPage",
+            "label": "Authors posts per page",
+            "value": 12,
+            "type": "number"
+        },
+        {
+            "name": "excerptLength",
+            "label": "Excerpt length",
+            "value": 25,
+            "type": "number"
+        },
+        {
+            "name": "logo",
+            "label": "Website logo",
+            "value": "",
+            "type": "upload",
+            "upload": true
+        }
+    ],
+    "customConfig": [
+        {
+            "name": "mainWidth",
+            "label": "Main width",
+            "group": "Layout",
+            "value": "860px",
+            "type": "text"
+        },
+        {
+            "name": "sidebarWidth",
+            "label": "Sidebar width",
+            "group": "Layout",
+            "value": "300px",
+            "type": "text"
+        },
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "Selected Posts",
+            "group": "Sidebar",
+            "size": "small"
+        },
+        {
+            "name": "selectedPosts",
+            "label": "Source",
+            "group": "Sidebar",
+            "note": "Display posts from the specified tag",
+            "value": "",
+            "type": "tags-dropdown"
+        },
+        {
+            "name": "amountSelectedtPosts",
+            "label": "Number of posts",
+            "group": "Sidebar",
+            "value": "3",
+            "type": "text"
+        },
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "Authors",
+            "group": "Sidebar",
+            "size": "big"
+        },
+        {
+            "name": "authors",
+            "label": "On / Off",
+            "group": "Sidebar",
+            "note": "Enable or disable the authors section",
+            "value": true,
+            "type": "checkbox"
+        },
+        {
+            "name": "authorsNumber",
+            "label": "Number of authors",
+            "group": "Sidebar",
+            "value": "5",
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": " ",
+            "group": "Additional",
+            "size": "small"
+        },
+        {
+            "name": "faviconUpload",
+            "label": "Upload favicon file",
+            "group": "Additional",
+            "note": "The ideal size of a favicon is 16x16 pixels. Save your favicon as either favicon.png or favicon.ico",
+            "value": "",
+            "type": "smallupload",
+            "upload": true
+        },
+        {
+            "name": "faviconExtension",
+            "label": "Favicon extension",
+            "group": "Additional",
+            "value": "image/x-icon",
+            "type": "select",
+            "options": [
+                {
+                    "label": ".ico",
+                    "value": "image/x-icon"
+                },
+                {
+                    "label": ".png",
+                    "value": "image/png"
+                }
+            ]
+        }
+    ],
+    "postConfig": [
+        {
+            "name": "displayAuthorBio",
+            "label": "Display author bio",
+            "value": 1,
+            "type": "select",
+            "options": [
+                {
+                    "label": "Enabled",
+                    "value": 1
+                },
+                {
+                    "label": "Disabled",
+                    "value": 0
+                }
+            ]
+        }
+    ]
+}

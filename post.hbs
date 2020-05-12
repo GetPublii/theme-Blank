@@ -4,9 +4,9 @@
 <main>
 
    {{! injects code via a Custom HTML tool - as defined in the config.json file in the "renderer" section }}
-   {{#if @customHTML.afterPost}}
+   {{#if @customHTML.beforePost}}
       <div id="custom-html-before-post">
-         {{{@customHTML.afterPost}}}
+         {{{@customHTML.beforePost}}}
       </div>
    {{/if}}
    {{! /injects code via a Custom HTML tool }}

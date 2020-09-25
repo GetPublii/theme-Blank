@@ -21,6 +21,19 @@
       "relatedPosts": "Author: "
    },
 
+   "tags": {
+      "tagsPageTitle": "Tags",
+      "description": "Collection of all tags",
+      "post": {
+       "1": "Post",
+          "default": "Posts"
+      }
+  },
+
+  "author": {
+    "visitWebsite": "Visit website"
+  },
+
    "error": {
        "404": "Error 404",
        "message": "The page you were looking for appears to have been moved, deleted or does not exist. You could go back to where you were or head straight to our home page.",

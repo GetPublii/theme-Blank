@@ -6,6 +6,38 @@
    {{! indicates the author's context }}
    {{#author}}
 
+      {{! author featured image }}
+      {{#featuredImage}}
+         {{! checks if an image exists }}
+         {{#if url}}
+            <figure>
+               <img
+                  src="{{url}}"
+                  {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled  }}
+                  {{#if @config.site.responsiveImages}}
+                     {{responsiveImageAttributes 'authorImage' srcset sizes}}
+                  {{/if}}
+                  {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated  }}
+                  {{lazyload "lazy"}}
+                  height="{{height}}"
+                  width="{{width}}"
+                  alt="{{alt}}">
+
+                  {{! checks if a caption and credits exist  }}
+                  {{#checkIfAny caption credits}}
+                     <figcaption>
+                        {{caption}}
+                        {{credits}}
+                     </figcaption>                      
+                  {{/checkIfAny}}
+                  {{! /checks if a caption and credits exist  }}
+                  
+            </figure>
+         {{/if}}
+         {{! /checks if an image exists }}
+      {{/featuredImage}}
+      {{! /author featured image }}
+
       {{! check if an author avatar exists }}
       {{#if avatar}}
          <img 
@@ -31,6 +63,12 @@
          <p>{{email}}</p>
       {{/if}}
       {{! /check if a author email address exists }}
+
+      {{! check if an author website URL exists }}
+      {{#if website}}
+         <p>{{website}}</p>
+      {{/if}}
+      {{! /check if a author website URL exists }}
 
    {{/author}}
    {{! /indicates the author's context }}

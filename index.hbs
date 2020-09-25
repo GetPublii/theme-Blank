@@ -10,17 +10,29 @@
             {{#featuredImage}}
                 {{! checks if an image exists }}
                 {{#if url}}
-                    <img
-                        src="{{url}}"
-                        {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled  }}
-                        {{#if @config.site.responsiveImages}}
-                            {{responsiveImageAttributes 'featuredImage' srcset sizes}}
-                        {{/if}}
-                        {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated  }}
-                        {{lazyload "lazy"}}
-                        height="{{height}}"
-                        width="{{width}}"
-                        alt="{{alt}}">
+                    <figure>
+                        <img
+                            src="{{url}}"
+                            {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled  }}
+                            {{#if @config.site.responsiveImages}}
+                                {{responsiveImageAttributes 'featuredImage' srcset sizes}}
+                            {{/if}}
+                            {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated  }}
+                            {{lazyload "lazy"}}
+                            height="{{height}}"
+                            width="{{width}}"
+                            alt="{{alt}}">
+
+                            {{! checks if a caption and credits exist  }}
+                            {{#checkIfAny caption credits}}
+                                <figcaption>
+                                    {{caption}}
+                                    {{credits}}
+                                </figcaption>                      
+                            {{/checkIfAny}}
+                            {{! /checks if a caption and credits exist  }}
+
+                     </figure>
                 {{/if}}
                 {{! /checks if an image exists }}
             {{/featuredImage}}

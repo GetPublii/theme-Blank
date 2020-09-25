@@ -6,6 +6,38 @@
    {{! indicates the tag's context}}
       {{#tag}}
 
+         {{! tag featured image }}
+         {{#featuredImage}}
+            {{! checks if an image exists }}
+            {{#if url}}
+               <figure>
+                  <img
+                     src="{{url}}"
+                     {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled  }}
+                     {{#if @config.site.responsiveImages}}
+                        {{responsiveImageAttributes 'tagImage' srcset sizes}}
+                     {{/if}}
+                     {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated  }}
+                     {{lazyload "lazy"}}
+                     height="{{height}}"
+                     width="{{width}}"
+                     alt="{{alt}}">
+
+                  {{! checks if a caption and credits exist  }}
+                  {{#checkIfAny caption credits}}
+                     <figcaption>
+                        {{caption}}
+                        {{credits}}
+                     </figcaption>                      
+                  {{/checkIfAny}}
+                  {{! /checks if a caption and credits exist  }}
+                  
+               </figure>
+            {{/if}}
+            {{! /checks if an image exists }}
+         {{/featuredImage}}
+         {{! /tag featured image }}
+
          <h1>
             {{name}}
             <sup>({{postsNumber}})</sup>
@@ -21,7 +53,6 @@
 
       {{/tag}}
    {{! /indicates the tag's context }}
-
 
    {{! loop that generates a list of posts }}
    {{#each posts}}

@@ -1,0 +1,67 @@
+{{! Tags page; this file renders a page containing a list of all the tags }}
+{{> head}}
+{{> navbar}}
+<main>
+   
+   <h1>
+      {{ translate 'tags.tagsPageTitle' }}
+      <sup>({{tagsNumber}})</sup>
+   </h1>
+
+   <p>
+      {{ translate 'tags.description' }}
+   </p>
+
+   <ul>
+      {{! loop that generates a list of tags }}
+      {{#each tags}}
+         <li>
+
+            {{! tag featured image }}
+            {{#featuredImage}}
+               {{! checks if an image exists }}
+               {{#if url}}
+                  <img
+                     src="{{url}}"
+                     {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled }}
+                     {{#if @config.site.responsiveImages}}
+                        {{responsiveImageAttributes 'tagImage' srcset sizes}}
+                     {{/if}}
+                     {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated }}
+                     {{lazyload "lazy"}}
+                     height="{{height}}"
+                     width="{{width}}"
+                     alt="{{alt}}">
+               {{/if}}
+               {{! /checks if an image exists }}
+            {{/featuredImage}}
+            {{! /tag featured image }}
+
+            {{! tag name }}
+            <h2>
+               <a href="{{url}}">{{name}}</a>
+            </h2>
+            {{! /tag name }}
+
+            {{! number of posts in the tag }}
+            <span>{{postsNumber}} {{ translate "tags.post" (math postsNumber '+' 0)}} </span> 
+            {{! /number of posts in the tag }}
+
+            {{! tag description }}
+            {{#if description}}
+               <p>{{description}}</p>                   
+            {{/if}}
+            {{! /tag description }}
+
+            
+         </li>
+      {{/each}}
+      {{! /loop that generates a list of tags }}
+   </ul>
+
+</main>
+<aside>
+   {{> sidebar}} 
+</aside>
+
+{{> footer}}

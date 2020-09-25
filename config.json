@@ -1,6 +1,6 @@
 {
     "name": "Blank",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "author": "TidyCustoms <https://tidycustoms.net/>",
     "renderer": {
         "relatedPostsNumber": 3,
@@ -14,11 +14,23 @@
         "featuredPostsNumber": 0,
         "tagsFeaturedPostsNumber": 0,
         "authorsFeaturedPostsNumber": 0,
+        "createTagPages": true,
+        "createAuthorPages": true,
+        "createTagsList": true,
         "create404page": true,
+        "createSearchPage": false,
         "customHTML": {
             "beforePost": "Before every post",
             "afterPost": "After every post"
         }
+    },
+    "supportedFeatures": {
+        "blockEditor": true,
+        "tagsList": true,
+        "tagImages": true,
+        "authorImages": true,
+        "searchPage": false,
+        "errorPage": true
     },
     "menus": {
         "mainMenu": "Main menu",
@@ -170,5 +182,129 @@
                 }
             ]
         }
-    ]
+    ],
+    "files": {
+        "ignoreAssets": [
+            "scss",
+            ".DS_Store"
+        ],
+        "assetsPath": "assets",
+        "partialsPath": "partials",
+        "responsiveImages": {
+            "contentImages": {
+                "sizes": "(max-width: 1200px) 100vw, 1200px",
+                "dimensions": {
+                    "xs": {
+                        "width": 300,
+                        "height": "auto"
+                    },
+                    "sm": {
+                        "width": 480,
+                        "height": "auto"
+                    },
+                    "md": {
+                        "width": 749,
+                        "height": "auto"
+                    },
+                    "xl": {
+                        "width": 1200,
+                        "height": "auto"
+                    }
+                }
+            },
+            "featuredImages": {
+                "sizes": "(max-width: 1200px) 100vw, 1200px",
+                "dimensions": {
+                    "xs": {
+                        "width": 300,
+                        "height": 200
+                    },
+                    "sm": {
+                        "width": 480,
+                        "height": "auto"
+                    },
+                    "md": {
+                        "width": 749,
+                        "height": "auto"
+                    },
+                    "xl": {
+                        "width": 1200,
+                        "height": "auto"
+                    }
+                }
+            },
+            "tagImages": {
+                "sizes": "(max-width: 1200px) 100vw, 1200px",
+                "dimensions": {
+                    "xs": {
+                        "width": 300,
+                        "height": 200
+                    },
+                    "sm": {
+                        "width": 480,
+                        "height": "auto"
+                    },
+                    "md": {
+                        "width": 749,
+                        "height": "auto"
+                    },
+                    "xl": {
+                        "width": 1200,
+                        "height": "auto"
+                    }
+                }
+            },
+            "authorImages": {
+                "sizes": "(max-width: 1200px) 100vw, 1200px",
+                "dimensions": {
+                    "xs": {
+                        "width": 300,
+                        "height": 200
+                    },
+                    "sm": {
+                        "width": 480,
+                        "height": "auto"
+                    },
+                    "md": {
+                        "width": 749,
+                        "height": "auto"
+                    },
+                    "xl": {
+                        "width": 1200,
+                        "height": "auto"
+                    }
+                }
+            },
+            "optionImages": {
+                "sizes": "(max-width: 1200px) 100vw, 1200px",
+                "dimensions": {
+                    "xs": {
+                        "width": 300,
+                        "height": 200
+                    },
+                    "sm": {
+                        "width": 480,
+                        "height": "auto"
+                    },
+                    "md": {
+                        "width": 749,
+                        "height": "auto"
+                    },
+                    "xl": {
+                        "width": 1200,
+                        "height": "auto"
+                    }
+                }
+            },
+            "galleryImages": {
+                "sizes": "",
+                "dimensions": {
+                    "thumbnail": {
+                        "width": 720,
+                        "height": "auto"
+                    }
+                }
+            }
+        }
+    }
 }

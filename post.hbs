@@ -13,7 +13,7 @@
 
    {{! indicates the post's context}}
    {{#post}}
-      <article> 
+      <article>
          <header>
 
             {{! post title }}
@@ -83,7 +83,7 @@
             {{! /check if an image exists }}
          {{/featuredImage}}
          {{! /featured image }}
-         
+
          {{! post body }}
          <div id="post-entry">
             {{{text}}}
@@ -119,7 +119,7 @@
                      </p>
                   {{/if}}
                   {{! /checks if an author description exists }}
-               
+
                </div>
             {{/author}}
             {{! /author bio section }}
@@ -134,14 +134,14 @@
                   <a href="{{url}}" rel="prev">
                      &larr; {{ translate 'post.previousPost' }}
                      ({{title}})
-                  </a>             
+                  </a>
                {{/../previousPost}}
-               
-               {{#../nextPost}}                
-                  <a href="{{url}}" rel="prev">
-                     {{ translate 'post.nextPost' }} 
+
+               {{#../nextPost}}
+                  <a href="{{url}}" rel="next">
+                     {{ translate 'post.nextPost' }}
                      ({{title}}) &rarr;
-                  </a>                
+                  </a>
                {{/../nextPost}}
             </nav>
          {{/checkIfAny}}
@@ -159,7 +159,7 @@
 
                   {{! loop that generates a list of related posts}}
                   {{#each ../relatedPosts}}
-                     <section>     
+                     <section>
                         {{#featuredImage}}
                            {{#if url}}
                               <a href="{{../url}}" >
@@ -195,7 +195,7 @@
       </article>
    {{/post}}
    {{! /indicates the post's context}}
-   
+
    {{! code injection by a Custom HTML tool - defined in config.json file in the renderer section}}
    {{#if @customHTML.afterPost}}
       <div id="custom-html-after-post">

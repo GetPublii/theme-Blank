@@ -41,9 +41,11 @@
       {{! check if an author avatar exists }}
       {{#if avatar}}
          <img 
-            src="{{avatar}}" 
+            src="{{avatarImage.url}}" 
             {{ lazyload "eager" }} 
-            alt="{{name}}">
+            alt="{{avatarImage.alt}}" 
+            height="{{avatarImage.height}}" 
+            width="{{avatarImage.width}}">
       {{/if}}
       {{! /check if an author avatar exists }}
 
@@ -112,7 +114,12 @@
 
          {{! post author }}
          {{#author}}
-            <img src="{{avatar}}" {{lazyload "lazy"}} alt="">
+            <img  
+               src="{{avatarImage.url}}" 
+               {{lazyload "lazy"}} 
+               alt="{{avatarImage.alt}}" 
+               height="{{avatarImage.height}}"  
+               width="{{avatarImage.width}}">
             <a href="{{url}}">{{name}}</a>
          {{/author}}
          {{! /post author }}

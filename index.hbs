@@ -52,7 +52,12 @@
 
             {{! post author }}
             {{#author}}
-                <img src="{{avatar}}" {{lazyload "lazy"}} alt="">
+                <img 
+                    src="{{avatarImage.url}}" 
+                    {{lazyload "lazy"}} 
+                    alt="{{avatarImage.alt}}" 
+                    height="{{avatarImage.height}}"  
+                    width="{{avatarImage.width}}">
                 <a href="{{url}}">{{name}}</a>
             {{/author}}
             {{! /post author }}

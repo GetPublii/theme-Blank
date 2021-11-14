@@ -50,7 +50,12 @@
             {{#checkIf @index '<' @config.custom.authorsNumber}} {{! the number of authors is specified in the theme option (located in Theme -> Sidebar)}}
                <li>
                   <a href="{{url}}" >
-                     <img src="{{avatar}}" {{lazyload "lazy"}} alt="{{name}}">
+                     <img 
+                        src="{{avatarImage.url}}" 
+                        {{lazyload "lazy"}} 
+                        alt="{{avatarImage.alt}}" 
+                        height="{{avatarImage.height}}"  
+                        width="{{avatarImage.width}}">
                   </a>
                   <a href="{{url}}">{{name}} <sup>{{postsNumber}}</sup></a>
                </li>

@@ -12,7 +12,7 @@ The Blank is a clean and minimalistic Publii boilerplate theme that is perfect f
 1. Download the blank.zip theme package
 2. Open Publii and navigate to the Themes by clicking on the three dots in the top-right of the Publii interface to open the submenu, then clicking the Themes option
 3. Drag and drop the downloaded blank.zip package onto the themes section; Publii will automatically unpack and add the downloaded theme to its library.
-4. Now tha Blank theme will be available in the Site Settings on the drop-down list.
+4. Now the Blank theme will be available in the Site Settings on the drop-down list.
 
 ### Author:
 

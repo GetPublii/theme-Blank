@@ -198,6 +198,10 @@
    {{/post}}
    {{! /indicates the post's context}}
 
+   {{! display comments plugin: it requires the "customComments" flag to be enabled in the "supportedFeatures" section of the config.json file}}
+      {{{@commentsCustomCode}}}
+   {{! /display comments plugin}}
+
    {{! code injection by a Custom HTML tool - defined in config.json file in the renderer section}}
    {{#if @customHTML.afterPost}}
       <div id="custom-html-after-post">

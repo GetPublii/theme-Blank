@@ -1,6 +1,6 @@
 {
     "name": "Blank",
-    "version": "1.3.0.0",
+    "version": "1.4.0.0",
     "author": "TidyCustoms <https://tidycustoms.net/>",
     "renderer": {
         "relatedPostsNumber": 3,
@@ -18,7 +18,7 @@
         "createAuthorPages": true,
         "createTagsList": true,
         "create404page": true,
-        "createSearchPage": false,
+        "createSearchPage": true,
         "customHTML": {
             "beforePost": "Before every post",
             "afterPost": "After every post"
@@ -27,10 +27,15 @@
     "supportedFeatures": {
         "blockEditor": true,
         "tagsList": true,
+        "tagPages": true,
         "tagImages": true,
+        "authorPages": true,
         "authorImages": true,
-        "searchPage": false,
-        "errorPage": true
+        "searchPage": true,
+        "errorPage": true,
+        "customSearch": true, 
+        "customComments": true,
+        "embedConsents": true
     },
     "menus": {
         "mainMenu": "Main menu",

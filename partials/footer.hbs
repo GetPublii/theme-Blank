@@ -10,5 +10,13 @@
 
 <script async src="{{js "scripts.js"}}"></script>
 
+{{! code injection by a Custom HTML tool }}
+   {{{@footerCustomCode}}}
+{{! /code injection by a Custom HTML tool }}
+
+{{! helper for creating footer output with Publii-related tags. Currently used for GDPR cookies popup }}
+   {{{ publiiFooter }}}
+{{! /helper for creating footer output with Publii-related tags. Currently used for GDPR cookies popup }}
+
 </body>
 </html>

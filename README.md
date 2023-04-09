@@ -1,6 +1,6 @@
 # Publii Blank Theme
 
-Version: 1.4.0.0
+Version: 1.5.0.0
 
 The Blank is a clean and minimalistic Publii boilerplate theme that is perfect for users who want to start the adventure of creating Publi themes, having everything you need to create your own site.
 

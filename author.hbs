@@ -51,12 +51,16 @@
 
       <h1>
          {{name}}
-         <sup>({{postsNumber}})</sup>
+         {{! check if a 'Display post counter' author option is enabled }}
+         {{#if authorViewConfig.displayPostCounter}}
+            <sup>({{postsNumber}})</sup>
+         {{/if}}
+         {{! /check if a 'Display post counter' author option is enabled }}
       </h1>
 
       {{! check if an author description exists }}
       {{#if description}}
-         <p>{{description}}</p>
+         <div> {{{description}}} </div>
       {{/if}}
       {{! /check if a author description exists }}
 

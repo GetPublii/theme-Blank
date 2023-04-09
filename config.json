@@ -1,6 +1,6 @@
 {
     "name": "Blank",
-    "version": "1.4.0.0",
+    "version": "1.5.0.0",
     "author": "TidyCustoms <https://tidycustoms.net/>",
     "renderer": {
         "relatedPostsNumber": 3,
@@ -174,10 +174,46 @@
             ]
         }
     ],
+    "authorConfig": [
+        {
+            "name": "displayPostCounter",
+            "label": "Display post counter",
+            "value": 1,
+            "type": "select",
+            "options": [
+                {
+                    "label": "Enabled",
+                    "value": 1
+                },
+                {
+                    "label": "Disabled",
+                    "value": 0
+                }
+            ]
+        }
+    ],
     "postConfig": [
         {
             "name": "displayAuthorBio",
             "label": "Display author bio",
+            "value": 1,
+            "type": "select",
+            "options": [
+                {
+                    "label": "Enabled",
+                    "value": 1
+                },
+                {
+                    "label": "Disabled",
+                    "value": 0
+                }
+            ]
+        }
+    ],
+    "tagConfig": [
+        {
+            "name": "displayPostCounter",
+            "label": "Display post counter",
             "value": 1,
             "type": "select",
             "options": [

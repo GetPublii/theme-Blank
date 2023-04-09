@@ -40,14 +40,16 @@
 
          <h1>
             {{name}}
-            <sup>({{postsNumber}})</sup>
+            {{! check if a 'Display post counter' tag option is enabled }}
+            {{#if tagViewConfig.displayPostCounter}}
+               <sup>({{postsNumber}})</sup>
+            {{/if}}
+            {{! /check if a 'Display post counter' tag option is enabled }} 
          </h1>
 
          {{! check if a tag description exists }}
          {{#if description}}
-            <p>
-               {{description}}
-            </p>
+            <div> {{{description}}} </div>
          {{/if}}
          {{! /check if a tag description exists }}  
 

@@ -18,16 +18,16 @@ The Blank is a clean and minimalistic Publii boilerplate theme that is perfect f
 
 Commits on Aug 17, 2024  
 **feat:** Added support for Pages ver. 2.0.0.0  
-
+---
 Commits on Jul 11, 2022  
 **feat:** updated to support search and comments plugins, also Cookie banner  
-
+---
 Commits on Nov 14, 2021  
 **fix:** Updated Avatar markup  
-
+---
 Commits on Mar 31, 2021  
 **fix:** end tags `</body></html>` added to footer  
-
+---
 
 ### Author:
 

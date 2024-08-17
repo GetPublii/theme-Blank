@@ -1,6 +1,6 @@
 {
     "name": "Blank",
-    "version": "1.5.0.0",
+    "version": "2.0.0.0",
     "author": "TidyCustoms <https://tidycustoms.net/>",
     "renderer": {
         "relatedPostsNumber": 3,
@@ -21,7 +21,9 @@
         "createSearchPage": true,
         "customHTML": {
             "beforePost": "Before every post",
-            "afterPost": "After every post"
+            "afterPost": "After every post",
+            "beforePage": "Before every page",
+            "afterPage": "After every page"
         }
     },
     "supportedFeatures": {
@@ -35,7 +37,8 @@
         "errorPage": true,
         "customSearch": true, 
         "customComments": true,
-        "embedConsents": true
+        "embedConsents": true,
+        "pages": true
     },
     "menus": {
         "mainMenu": "Main menu",
@@ -197,6 +200,40 @@
             "name": "displayAuthorBio",
             "label": "Display author bio",
             "value": 1,
+            "type": "select",
+            "options": [
+                {
+                    "label": "Enabled",
+                    "value": 1
+                },
+                {
+                    "label": "Disabled",
+                    "value": 0
+                }
+            ]
+        }
+    ],
+    "pageConfig": [
+        {
+            "name": "displayAuthorBio",
+            "label": "Display author bio",
+            "value": 1,
+            "type": "select",
+            "options": [
+                {
+                    "label": "Enabled",
+                    "value": 1
+                },
+                {
+                    "label": "Disabled",
+                    "value": 0
+                }
+            ]
+        },
+        {
+            "name": "displayChildPages",
+            "label": "Display child pages",
+            "value": 0,
             "type": "select",
             "options": [
                 {

@@ -1,0 +1,26 @@
+{{! 
+This template file is used to generate a list of child pages (subpages) for the current page. 
+It iterates over each subpage associated with the current page, retrieves the page data, 
+and then displays a link to each subpage. If a subpage has its own child pages, it recursively 
+renders those as well using the 'subpages-list' partial template. 
+}}
+
+{{#each subpages}}
+   {{#getPage @this}}
+      <li>
+
+         {{! Displays a link to the subpage with the title as the anchor text }}
+         <a href="{{url}}">{{title}}</a>
+
+         {{! Checks if the subpage has its own child pages }}
+         {{#if subpages}}
+            <ul>
+               
+               {{! Recursively includes the subpages-list partial to display nested child pages }}
+               {{> subpages-list}}
+            </ul>
+         {{/if}}
+
+      </li>
+   {{/getPage}}
+{{/each}}

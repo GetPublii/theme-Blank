@@ -21,6 +21,12 @@
       "relatedPosts": "Author: "
    },
 
+   "page": {
+      "publishedBy": "By ",
+      "lastUpdatedDate": "Updated on: ",
+      "childPages": "Child pages"
+   },
+
    "tags": {
       "tagsPageTitle": "Tags",
       "description": "Collection of all tags",

@@ -1,0 +1,162 @@
+{{! Page; this file renders a single page}}
+{{> head}}
+{{> navbar}}
+<main>
+
+   {{! injects code via a Custom HTML tool - as defined in the config.json file in the "renderer" section }}
+   {{#if @customHTML.beforePage}}
+      <div id="custom-html-before-page">
+         {{{@customHTML.beforePage}}}
+      </div>
+   {{/if}}
+   {{! /injects code via a Custom HTML tool }}
+
+   {{! indicates the page's context}}
+   {{#page}}
+      <article>
+         <header>
+
+            {{! page title }}
+            <h1>
+               {{title}}
+            </h1>
+            {{! /page title }}
+
+            {{! page creation date }}
+            <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+               {{date createdAt}}
+            </time>
+            {{! /page creation date }}
+
+            {{! page author }}
+            {{ translate 'page.publishedBy' }}
+            {{#author}}
+               <a href="{{url}}" rel="author" title="{{name}}">{{name}}</a>
+            {{/author}}
+            {{! /page author }}
+
+            {{! page modification date }}
+            {{#if modifiedAt}}
+               {{ translate 'page.lastUpdatedDate' }}
+               <time datetime="{{date modifiedAt 'YYYY-MM-DDTHH:mm'}}">
+                  {{date modifiedAt}}
+               </time>
+            {{/if}}
+            {{! /page modification date }}
+
+         </header>
+
+         {{! featured image }}
+         {{#featuredImage}}
+            {{! check if an image exists }}
+            {{#if url}}
+               <figure id="featured-image">
+                  <img
+                     src="{{url}}"
+                     {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled  }}
+                     {{#if @config.site.responsiveImages}}
+                        {{responsiveImageAttributes 'featuredImage' srcset sizes}}
+                     {{/if}}
+                     {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated }}
+                     {{ lazyload "eager" }}
+                     height="{{height}}"
+                     width="{{width}}"
+                     alt="{{alt}}">
+                  {{! checks if the caption or credits exist }}
+                  {{#checkIfAny caption credits}}
+                     <figcaption>
+                        {{caption}}
+                        {{credits}}
+                     </figcaption>
+                  {{/checkIfAny}}
+                  {{! /checks if the caption or credits exist }}
+               </figure>
+            {{/if}}
+            {{! /check if an image exists }}
+         {{/featuredImage}}
+         {{! /featured image }}
+
+         {{! page body }}
+         <div id="page-entry">
+            {{{text}}}
+         </div>
+         {{! /page body }}
+
+         {{! checks if the "displayAuthorBio" page option is enabled - the Page Options are defined in the config.json in the "pageConfig" section, and are accessible in the Theme -> Page Options section of Publii and in the page editor itself in the sidebar -> Other Options section }}
+         {{#if @config.page.displayAuthorBio}}
+            {{! author bio section }}
+            {{#author}}
+               <div id="author-bio">
+
+                  {{! checks if an author avatar exists }}
+                  {{#if avatar}}
+                     <img
+                        src="{{avatarImage.url}}" 
+                        {{ lazyload "lazy" }} 
+                        alt="{{avatarImage.alt}}" 
+                        height="{{avatarImage.height}}" 
+                        width="{{avatarImage.width}}">
+                  {{/if}}
+                  {{! /checks if an author avatar exists }}
+
+                  {{! displays the author's name with a link to the author's page }}
+                     <h3>
+                        <a href="{{url}}" title="{{name}}">{{name}}</a>
+                     </h3>
+                  {{! /displays the author's name with a link to the author's page }}
+
+
+                  {{! checks if an author description exists }}
+                  {{#if description}}
+                     <div> {{{description}}} </div>
+                  {{/if}}
+                  {{! /checks if an author description exists }}
+
+               </div>
+            {{/author}}
+            {{! /author bio section }}
+         {{/if}}
+         {{! /check if the "displayAuthorBio" Page option is enabled  }}
+
+      </article>
+
+      {{! Checks if the "displayChildPages" page option is enabled - the Page Options are defined in the config.json in the "pageConfig" section and are accessible in the Theme -> Page Options section of Publii and in the page editor itself in the sidebar -> Other Options section }}
+      {{#if @config.page.displayChildPages}}
+         {{! Checks if subpages exist }}
+         {{#if subpages}}
+            <div class="subpages">
+               
+               {{! Displays the heading for child pages }}
+               <h2>{{ translate 'page.childPages' }}</h2>
+               
+               {{! Displays the list of subpages }}
+               <ul>
+                  {{> subpages-list}}
+               </ul>
+            </div>
+         {{/if}}
+         {{! /Checks if subpages exist }}
+      {{/if}}
+      {{! /Checks if the "displayChildPages" page option is enabled }}
+
+   {{/page}}
+   {{! /indicates the page's context}}
+
+   {{! display comments plugin: it requires the "customComments" flag to be enabled in the "supportedFeatures" section of the config.json file}}
+      {{{@commentsCustomCode}}}
+   {{! /display comments plugin}}
+
+   {{! code injection by a Custom HTML tool - defined in config.json file in the renderer section}}
+   {{#if @customHTML.afterPage}}
+      <div id="custom-html-after-page">
+         {{{@customHTML.afterPage}}}
+      </div>
+   {{/if}}
+   {{! injects code via a Custom HTML tool }}
+
+</main>
+<aside>
+   {{> sidebar}}
+</aside>
+
+{{> footer}}

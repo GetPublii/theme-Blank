@@ -2,14 +2,14 @@
 {{#unless level}}
    <nav>
 {{/unless}}
-{{! /check if this is a first menu lavel }}
+{{! /check if this is a first menu level }}
 
       {{! check if a submenu exists, then display .submenu class with number of nested menu levels; if the submenu does not exist, display the .menu class  }}
       <ul{{#if level}} class="submenu level-{{level}}" aria-hidden="true" {{else}} class="menu"{{/if}}>
 
          {{! loop generating a list of menu items}}
          {{#each items}}
-            <li{{menuItemClasses}}> {{! menuItemClasses generates the following CSS classses: .active and .has-submenu }}
+            <li{{menuItemClasses}}> {{! menuItemClasses generates the following CSS classes: .active and .has-submenu }}
 
             {{! check if the menu item is a link }}
             {{#if link}}

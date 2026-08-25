@@ -1,89 +1,111 @@
-{{! Front page; this file renders a front page with a list of the latest posts }}
+{{! Front page - Landing Page for Foundational Web Hosting }}
 {{> head}}
 {{> navbar}}
-<main>
-    {{! loop that generates a list of posts }}
-    {{#each posts}}
-        <article>
 
-            {{! featured image }}
-            {{#featuredImage}}
-                {{! checks if an image exists }}
-                {{#if url}}
-                    <figure>
-                        <img
-                            src="{{url}}"
-                            {{! checks if the Responsive Images option (located in Site Settings -> Website Speed) is enabled  }}
-                            {{#if @config.site.responsiveImages}}
-                                {{responsiveImageAttributes 'featuredImage' srcset sizes}}
-                            {{/if}}
-                            {{! generates a native loading attribute; if the Media Lazy Load option (located in Site Settings -> Website Speed) is disabled, the loading attribute is not generated  }}
-                            {{lazyload "lazy"}}
-                            height="{{height}}"
-                            width="{{width}}"
-                            alt="{{alt}}">
+<main class="landing-page">
+    {{! Hero Section }}
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Foundational Web Hosting</h1>
+            <p class="hero-tagline">The Cornerstone of Your Digital Infrastructure</p>
+            <p class="hero-description">
+                Providing hosting architecture for resilience and seamless scalability. 
+                Build your online presence on a platform engineered for unwavering uptime and sustained growth.
+            </p>
+            <a href="#contact-form" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
 
-                            {{! checks if a caption and credits exist  }}
-                            {{#checkIfAny caption credits}}
-                                <figcaption>
-                                    {{caption}}
-                                    {{credits}}
-                                </figcaption>                      
-                            {{/checkIfAny}}
-                            {{! /checks if a caption and credits exist  }}
+    {{! Features Section }}
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Our WordPress Hosting?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#9889;</div>
+                    <h3>Blazing Fast Performance</h3>
+                    <p>Optimized specifically for WordPress sites with SSD storage and advanced caching.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128274;</div>
+                    <h3>Enterprise Security</h3>
+                    <p>SSL certificates, daily backups, malware scanning, and DDoS protection included.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128200;</div>
+                    <h3>Seamless Scalability</h3>
+                    <p>Grow without limits. Scale resources instantly as your traffic grows.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128172;</div>
+                    <h3>24/7 Expert Support</h3>
+                    <p>WordPress specialists available around the clock to help you succeed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128640;</div>
+                    <h3>99.9% Uptime Guarantee</h3>
+                    <p>Redundant infrastructure ensures your site stays online, always.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128190;</div>
+                    <h3>Automated Backups</h3>
+                    <p>Daily automated backups with one-click restore functionality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                     </figure>
-                {{/if}}
-                {{! /checks if an image exists }}
-            {{/featuredImage}}
-            {{! /featured image }}
+    {{! About Section }}
+    <section class="about">
+        <div class="container">
+            <h2>Built for WordPress, Engineered for Success</h2>
+            <p>
+                We provide specialized web hosting services designed exclusively for WordPress websites. 
+                Our infrastructure is purpose-built to handle the unique demands of WordPress, ensuring 
+                optimal performance, security, and reliability for your digital presence.
+            </p>
+            <p>
+                Whether you're launching your first blog or managing a high-traffic enterprise site, 
+                our hosting platform scales with you every step of the way.
+            </p>
+        </div>
+    </section>
 
-            {{! post title }}
-            <h2>
-                <a href="{{url}}">{{title}}</a>
-            </h2>
-            {{! /post title }}
+    {{! Contact Form Section - Google Interest Form Embed }}
+    <section id="contact-form" class="contact-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p class="form-intro">Fill out the form below and we'll contact you with a customized hosting solution for your WordPress site.</p>
+            
+            {{! Google Interest Form Embed Placeholder }}
+            <div class="google-form-embed">
+                {{! 
+                    INSTRUCTIONS: Replace the iframe src below with your Google Form embed URL.
+                    To get your Google Form embed URL:
+                    1. Open your Google Form
+                    2. Click "Send"
+                    3. Click the "< >" (Embed HTML) tab
+                    4. Copy the iframe src URL
+                    5. Replace the src attribute below with your URL
+                }}
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+                    width="100%" 
+                    height="800" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                    Loading…
+                </iframe>
+            </div>
+        </div>
+    </section>
 
-            {{! post creation date }}
-            <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
-                {{date createdAt}}
-            </time>
-            {{! /post creation date }}
-
-            {{! post author }}
-            {{#author}}
-                <img 
-                    src="{{avatarImage.url}}" 
-                    {{lazyload "lazy"}} 
-                    alt="{{avatarImage.alt}}" 
-                    height="{{avatarImage.height}}"  
-                    width="{{avatarImage.width}}">
-                <a href="{{url}}">{{name}}</a>
-            {{/author}}
-            {{! /post author }}
-
-            {{! main tag - if no main tag is selected, then the first tag in the list of all tags will be used }}
-            {{#if mainTag}}
-                <a href="{{mainTag.url}}">{{mainTag.name}}</a>
-            {{/if}}
-            {{! /main tag }}
-
-            {{! post excerpt - the Custom excerpt is generated when the Read More button is used when editing a post }}
-            {{#if hasCustomExcerpt}}
-                {{{ excerpt }}}
-            {{else}}
-                <p>{{{ excerpt }}}</p>
-            {{/if}}
-            {{! /post excerpt }}
-
-        </article>
-    {{/each}}
-    {{! /loop that generates list of posts }}
-    
 </main>
-<aside>
+
+{{! Hide sidebar on landing page }}
+<aside class="landing-page-sidebar" style="display: none;">
     {{> sidebar}}
 </aside>
 
-{{> pagination}}
 {{> footer}}
